@@ -9,16 +9,16 @@
 int check_cycle(listint_t *list)
 {
 	listint_t *curr;
-	int *start_add;
+	listint_t *start_node;
 
 	if (list == NULL || list->next == NULL)
 		return (0);
 	curr = list;
-	start_add = &list->n;
+	start_node = list;
 	while (curr != NULL)
 	{
 		curr = curr->next;
-		if (&curr->n == start_add)
+		if (curr == start_node)
 			return (1);
 	}
 	return (0);
