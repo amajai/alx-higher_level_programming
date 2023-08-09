@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Compiling main.py ..." && cp $PYFILE "${PYFILE}c"
