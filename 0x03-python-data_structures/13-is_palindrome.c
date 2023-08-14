@@ -9,26 +9,32 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *curr;
-	int num_list[64];
-	int r = 0, l = 0;
+	listint_t *slow, *fast, *prev = NULL, *tmp, *l, *r;
 
 	if (*head == NULL)
 		return (1);
-	curr = *head;
-	while (curr != NULL)
+	slow = *head;
+	fast = *head;
+	while (fast != NULL && fast->next != NULL)
 	{
-		num_list[r] = curr->n;
-		r++;
-		curr = curr->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-	r--;
-	while (l <= r)
+	while (slow != NULL)
 	{
-		if (num_list[l] != num_list[r])
+		tmp = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = tmp;
+	}
+	l = *head;
+	r = prev;
+	while (r != NULL)
+	{
+		if (l->n != r->n)
 			return (0);
-		l++;
-		r--;
+		r = r->next;
+		l = l->next;
 	}
 	return (1);
 }
