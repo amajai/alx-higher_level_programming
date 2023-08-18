@@ -23,7 +23,7 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %zd\n", pl->allocated);
 	for (i = 0; i < size; i++)
 	{
-		type = Py_TYPE(pl->ob_item[i])->tp_name;
+		type = pl->ob_item[i]->ob_type->tp_name;
 		printf("Element %zd: %s\n", i, type);
 		if (PyBytes_Check(pl->ob_item[i]))
 			print_python_bytes(pl->ob_item[i]);
