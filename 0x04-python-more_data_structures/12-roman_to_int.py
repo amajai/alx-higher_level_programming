@@ -31,6 +31,6 @@ def roman_to_int(roman_string):
             pos = -2
         else:
             pos += 1
-            if (pos > -1):
+            if pos > -1:
                 break
     return sum
