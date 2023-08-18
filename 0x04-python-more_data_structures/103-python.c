@@ -46,9 +46,9 @@ void print_python_bytes(PyObject *p)
 	if (PyBytes_Check(p))
 	{
 		PyBytes_AsStringAndSize(p, &buf, &length);
-		printf("size: %zd\n", length);
-		printf("trying string: %s\n", buf);
-		printf("first %zd bytes:", length + 1 <= 10 ? length + 1 : 10);
+		printf("  size: %zd\n", length);
+		printf("  trying string: %s\n", buf);
+		printf("  first %zd bytes:", length + 1 <= 10 ? length + 1 : 10);
 		for (i = 0; i <= length && i < 10; i++)
 			printf(" %02x", buf[i] & 0xff);
 		printf("\n");
