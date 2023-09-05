@@ -1,0 +1,38 @@
+This function takes two arguments, 'a' and 'b', and returns their sum as an integer. 
+If 'a' or 'b' is not an integer or a float, it will raise a TypeError.
+
+Function: add_integer(a, b=98)
+
+Arguments:
+    - a (int or float): The first number.
+    - b (int or float, optional): The second number. Defaults to 98.
+
+Returns:
+    - int: The sum of 'a' and 'b' as an integer.
+
+Raises:
+    - TypeError: If 'a' or 'b' is not an integer or a float.
+
+Tests
+=======
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 3)
+    5
+    >>> add_integer(2)
+    100
+    >>> add_integer(1e6, 9.8e5)
+    1980000
+    >>> add_integer(4, -20)
+    -16
+    >>> add_integer(2.5, 3.5)
+    5
+    >>> add_integer(1000000, 888999)
+    1888999
+    >>> add_integer(4, "ALX")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+    >>> add_integer("hello", "hello again")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
