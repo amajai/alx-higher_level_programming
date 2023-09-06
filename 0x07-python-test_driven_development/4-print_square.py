@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import doctest
 """
 This module provides a function to print a square of
 a specified size.

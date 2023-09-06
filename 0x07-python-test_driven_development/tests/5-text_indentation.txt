@@ -1,0 +1,50 @@
+Format text by adding line breaks after sentences ending with '.', '?', or ':'.
+
+Functions: 
+    text_indentation(text)
+
+Arguments:
+    text (str): The input text to be formatted.
+
+Returns:
+    None
+
+Raises:
+    TypeError: If 'text' is not a string.
+
+Tests
+=======
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+    >>> text = "This is a simple text. It contains sentences with periods. And colons: like this."
+    >>> text_indentation(text)
+    This is a simple text.
+    <BLANKLINE>
+    It contains sentences with periods.
+    <BLANKLINE>
+    And colons:
+    <BLANKLINE>
+    like this.
+    <BLANKLINE>
+    <BLANKLINE>
+
+    >>> text = "Text  with  multiple  spaces.   Hello.   World"
+    >>> text_indentation(text)
+    Text  with  multiple  spaces.
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+    World
+
+    >>> text = ""
+    >>> text_indentation(text)
+    <BLANKLINE>
+    
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text = "This is a sentence"
+    >>> text_indentation(text)
+    This is a sentence
