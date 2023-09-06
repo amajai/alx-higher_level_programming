@@ -1,0 +1,39 @@
+This function is used to print a person's name based on their first and last names.
+
+Functions:
+    say_my_name(first_name, last_name=""): Print a person's name.
+
+Arguments:
+    first_name (str): The first name of the person.
+    last_name (str, optional): The last name of the person. Defaults to an empty string.
+
+Returns:
+    None
+
+Raises:
+    TypeError: If 'first_name' or 'last_name' is not a string.
+
+Tests
+=======
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+    >>> say_my_name("Ali", "Mohammed")
+    My name is Ali Mohammed
+
+    >>> say_my_name("Sam")
+    My name is Sam 
+
+    >>> say_my_name(123, "Sam")
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Ali", [])
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(123, False)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
