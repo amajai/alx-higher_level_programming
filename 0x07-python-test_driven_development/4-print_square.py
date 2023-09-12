@@ -6,7 +6,7 @@ a specified size.
 """
 
 
-def print_square(size):
+def print_square(size=0):
     """Print a square of a specified size using hash symbols.
 
     """
