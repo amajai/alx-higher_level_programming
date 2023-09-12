@@ -26,6 +26,10 @@ Tests
     -16
     >>> add_integer(2.5, 3.5)
     5
+    >>> add_integer(float('inf'), float('inf'))
+    0
+    >>> add_integer(float('nan'), 33)
+    33
     >>> add_integer(1000000, 888999)
     1888999
     >>> add_integer(4, "ALX")
