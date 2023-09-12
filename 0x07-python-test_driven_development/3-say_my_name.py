@@ -6,7 +6,7 @@ first and last names.
 """
 
 
-def say_my_name(first_name, last_name=""):
+def say_my_name(first_name="", last_name=""):
     """Print a person's name based on their first and last names.
 
     """
