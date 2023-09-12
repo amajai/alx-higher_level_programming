@@ -6,7 +6,7 @@ a matrix by a given divisor.
 """
 
 
-def matrix_divided(matrix, div):
+def matrix_divided(matrix=[[1]], div=1):
     """Divide each element in a matrix by a given divisor.
     Return: a new matrix with divided values.
     """
@@ -30,6 +30,8 @@ def matrix_divided(matrix, div):
         if len(matrix[i]) != matrix_limit:
             raise TypeError(size_err)
 
+    if div == float('inf') or div == -float('inf') or div != div:
+        div = 10000
     if type(div) not in [int, float]:
         raise TypeError("div must be a number")
     if div == 0:
