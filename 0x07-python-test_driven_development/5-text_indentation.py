@@ -26,4 +26,3 @@ def text_indentation(text):
             print()
             print()
             is_newline = True
-    print()
