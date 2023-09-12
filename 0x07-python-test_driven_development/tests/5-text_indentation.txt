@@ -46,3 +46,6 @@ Tests
     >>> text = "This is a sentence"
     >>> text_indentation(text)
     This is a sentence
+
+    >>> text_indentation()
+
