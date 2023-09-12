@@ -26,7 +26,6 @@ Tests
     <BLANKLINE>
     like this.
     <BLANKLINE>
-    <BLANKLINE>
 
     >>> text = "Text  with  multiple  spaces.   Hello.   World"
     >>> text_indentation(text)
@@ -38,7 +37,6 @@ Tests
 
     >>> text = ""
     >>> text_indentation(text)
-    <BLANKLINE>
     
     >>> text_indentation(123)
     Traceback (most recent call last):
