@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module has a function (append_write) that appends a string at the
-end of a text file and returns the number 
+end of a text file and returns the number
 
 """
 
