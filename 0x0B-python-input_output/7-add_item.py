@@ -4,7 +4,7 @@ This module has function script that adds all arguments to a Python list, and
 then save them to a file
 
 """
-import sys
+import sys, os
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
@@ -14,11 +14,8 @@ def main(argv=[]):
     """
     filename = "add_item.json"
     obj = []
-    try:
+    if os.path.exists(filename):
         obj = load_from_json_file(filename)
-    except FileNotFoundError:
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write("[]")
 
     for item in argv:
         obj.append(item)
