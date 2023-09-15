@@ -7,7 +7,7 @@ This module is for class Base
 
 class Base:
     """
-    base class 
+    base class
 
     """
     __nb_objects = 0
