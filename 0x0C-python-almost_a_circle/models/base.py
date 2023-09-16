@@ -24,7 +24,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """ returns the JSON string representation of list_dictionaries
+        """returns the JSON string representation of list_dictionaries
 
         Args:
             list_dictionaries (list[dict,...]): list of dictionaries
@@ -34,6 +34,18 @@ class Base:
         else:
             return "[]"
 
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON string representation json_string
+
+        Args:
+            from_json_string (str): string representing a list of dictionaries
+        """
+        if json_string:
+            return json.loads(json_string)
+        else:
+            return []
+
     @classmethod
     def save_to_file(cls, list_objs):
         """writes the JSON string representation of list_objs to a file
@@ -42,6 +54,9 @@ class Base:
             list_objs (list): list of instances who inherits from Base
         """
         path = "{}.json".format(cls.__name__)
-        dict_list = [obj.to_dictionary() for obj in list_objs]
+        if list_objs:
+            dict_list = [obj.to_dictionary() for obj in list_objs]
+        else:
+            dict_list = []
         with open(path, "w", encoding="utf-8") as f:
             f.write(cls.to_json_string(dict_list))
