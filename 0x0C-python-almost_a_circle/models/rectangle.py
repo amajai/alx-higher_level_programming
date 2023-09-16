@@ -133,6 +133,23 @@ class Rectangle(Base):
             print(" " * self.x, end="")
             print("#" * self.width)
 
+    def update(self, *args):
+        """ assigns new argument value to each attribute
+
+        Args:
+            args (list): list of arguments
+        """
+        if len(args) > 0:
+            super().__init__(args[0])
+        if len(args) > 1:
+            self.__width = args[1]
+        if len(args) > 2:
+            self.__height = args[2]
+        if len(args) > 3:
+            self.__x = args[3]
+        if len(args) > 4:
+            self.__y = args[4]
+
     def __str__(self):
         wh = "{:d}/{:d}".format(self.width, self.height)
         xy = "{:d}/{:d}".format(self.x, self.y)
