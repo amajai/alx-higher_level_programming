@@ -79,6 +79,82 @@ class Base:
         return instance_list
 
     @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the csv string representation of list_objs to a csv
+
+        Args:
+            list_objs (list): list of instances who inherits from Base
+        """
+        path = "{}.csv".format(cls.__name__)
+        if list_objs:
+            dict_list = [obj.to_dictionary() for obj in list_objs]
+        else:
+            dict_list = []
+        csv_list = []
+        if cls.__name__ == "Square":
+            for obj in dict_list:
+                _id = obj['id']
+                _size = obj['size']
+                _x = obj['x']
+                _y = obj['y']
+                csv_line = f"{_id},{_size},{_x},{_y}"
+                csv_list.append(csv_line)
+        else:
+            for obj in dict_list:
+                _id = obj['id']
+                _width = obj['width']
+                _height = obj['height']
+                _x = obj['x']
+                _y = obj['y']
+                csv_line = f"{_id},{_width},{_height},{_x},{_y}"
+                csv_list.append(csv_line)
+        with open(path, "w", encoding="utf-8") as f:
+            if cls.__name__ == "Square":
+                f.write("id,size,x,y\n")
+            else:
+                f.write("id,width,height,x,y\n")
+            f.write('\n'.join(csv_list))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """returns a list of instances from csv
+        """
+        path = "{}.csv".format(cls.__name__)
+        if not os.path.exists(path):
+            return []
+        with open(path, "r", encoding="utf-8") as f:
+            csv_data = f.read().split('\n')
+        dict_list = []
+        if 'size' in csv_data[0]:
+            for csv_line in csv_data[1:]:
+                csv_values = csv_line.split(',')
+                dict_list.append(
+                    {
+                        "id": int(csv_values[0]),
+                        "size": int(csv_values[1]),
+                        "x": int(csv_values[2]),
+                        "y": int(csv_values[3]),
+                    }
+                )
+        else:
+            for csv_line in csv_data[1:]:
+                csv_values = csv_line.split(',')
+                dict_list.append(
+                    {
+                        "id": int(csv_values[0]),
+                        "width": int(csv_values[1]),
+                        "height": int(csv_values[2]),
+                        "x": int(csv_values[3]),
+                        "y": int(csv_values[4]),
+                    }
+                )
+        instance_list = []
+        for obj in dict_list:
+            instance = cls.create(**obj)
+            instance_list.append(instance)
+        return instance_list
+
+    @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set
 
