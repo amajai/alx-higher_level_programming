@@ -5,6 +5,7 @@ This module is for class Base
 """
 import json
 import os
+import turtle
 
 
 class Base:
@@ -167,3 +168,49 @@ class Base:
             instance = cls(1, 1)
         instance.update(**dictionary)
         return instance
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """opens a window and draws all the Rectangles and Squares
+
+        Args:
+            list_rectangles (dict): dictionary with key/value
+            list_squares (dict): dictionary with key/value
+        """
+        screen = turtle.Screen()
+        screen.title("ALX: Let's draw it")
+        screen.bgcolor("white")
+
+        for sq in list_squares:
+            t = turtle.Turtle()
+            t.hideturtle()
+            t.penup()
+            t.setpos(sq.x, sq.y)
+            t.pendown()
+            t.color("red")
+            t.forward(sq.size)
+            t.right(90)
+            t.forward(sq.size)
+            t.right(90)
+            t.forward(sq.size)
+            t.right(90)
+            t.forward(sq.size)
+            t.penup()
+
+        for rec in list_rectangles:
+            t2 = turtle.Turtle()
+            t2.hideturtle()
+            t2.penup()
+            t2.setpos(rec.x, rec.y)
+            t2.pendown()
+            t2.color("blue")
+            t2.forward(rec.width)
+            t2.right(90)
+            t2.forward(rec.height)
+            t2.right(90)
+            t2.forward(rec.width)
+            t2.right(90)
+            t2.forward(rec.height)
+            t2.penup()
+
+        screen.exitonclick()
