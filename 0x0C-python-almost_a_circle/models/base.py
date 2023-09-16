@@ -4,6 +4,7 @@ This module is for class Base
 
 """
 import json
+import os
 
 
 class Base:
@@ -62,12 +63,31 @@ class Base:
             f.write(cls.to_json_string(dict_list))
 
     @classmethod
+    def load_from_file(cls):
+        """returns a list of instances
+        """
+        path = "{}.json".format(cls.__name__)
+        if not os.path.exists(path):
+            return []
+        with open(path, "r", encoding="utf-8") as f:
+            json_dict_list = f.read()
+        dict_list = cls.from_json_string(json_dict_list)
+        instance_list = []
+        for obj in dict_list:
+            instance = cls.create(**obj)
+            instance_list.append(instance)
+        return instance_list
+
+    @classmethod
     def create(cls, **dictionary):
         """returns an instance with all attributes already set
 
         Args:
             dictionary (dict): dictionary with key/value
         """
-        instance = cls(1, 1)
+        if cls.__name__ == "Square":
+            instance = cls(1)
+        else:
+            instance = cls(1, 1)
         instance.update(**dictionary)
         return instance
