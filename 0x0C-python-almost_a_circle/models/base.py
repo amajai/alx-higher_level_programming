@@ -60,3 +60,14 @@ class Base:
             dict_list = []
         with open(path, "w", encoding="utf-8") as f:
             f.write(cls.to_json_string(dict_list))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set
+
+        Args:
+            dictionary (dict): dictionary with key/value
+        """
+        instance = cls(1, 1)
+        instance.update(**dictionary)
+        return instance
