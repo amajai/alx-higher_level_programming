@@ -76,5 +76,7 @@ class Square(Rectangle):
                     self.y = kwargs.get("y")
 
     def __str__(self):
+        """returns string representation of class object
+        """
         xy = "{:d}/{:d}".format(self.x, self.y)
         return f"[Square] ({self.id}) {xy} - {self.width}"
