@@ -52,6 +52,19 @@ class TestRectangle(unittest.TestCase):
             "height must be an integer"
         )
 
+        with self.assertRaises(TypeError) as context:
+            Rectangle(1, 2, "3")
+        self.assertEqual(
+            str(context.exception),
+            "x must be an integer"
+        )
+        with self.assertRaises(TypeError) as context:
+            Rectangle(1, 2, 3, "4")
+        self.assertEqual(
+            str(context.exception),
+            "y must be an integer"
+        )
+
         with self.assertRaises(ValueError) as context:
             Rectangle(0, 10)
         self.assertEqual(
@@ -156,5 +169,35 @@ class TestRectangle(unittest.TestCase):
         }
         self.assertDictEqual(r.to_dictionary(), expected_dict)
 
+    def test_save_to_file_none(self):
+        """
+        Test when path is none
+        """
+        Rectangle.save_to_file(None)
+        path = "Rectangle.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, "[]")
+
+    def test_save_to_file_empty(self):
+        """
+        Test when path is empty list
+        """
+        Rectangle.save_to_file([])
+        path = "Rectangle.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, "[]")
+
+    def test_save_to_file(self):
+        """
+        Test when path is provided
+        """
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        path = "Rectangle.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, '[{"x": 0, "y": 0, "id": 20, "height": 2, "width": 1}]')
+    
 if __name__ == '__main__':
     unittest.main()

@@ -43,6 +43,24 @@ class TestSquare(unittest.TestCase):
             "width must be an integer"
         )
 
+        with self.assertRaises(TypeError) as context:
+            Square(1, "2")
+        self.assertEqual(
+            str(context.exception),
+            "x must be an integer"
+        )
+        with self.assertRaises(TypeError) as context:
+            Square(1, 2, "3")
+        self.assertEqual(
+            str(context.exception),
+            "y must be an integer"
+        )
+        with self.assertRaises(ValueError) as context:
+            Square(-1)
+        self.assertEqual(
+            str(context.exception),
+            "width must be > 0"
+        )
         with self.assertRaises(ValueError) as context:
             Square(0)
         self.assertEqual(
@@ -137,6 +155,36 @@ class TestSquare(unittest.TestCase):
             "y": 3
         }
         self.assertDictEqual(r.to_dictionary(), expected_dict)
+
+    def test_save_to_file_none(self):
+        """
+        Test when path is none
+        """
+        Square.save_to_file(None)
+        path = "Square.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, "[]")
+
+    def test_save_to_file_empty(self):
+        """
+        Test when path is empty list
+        """
+        Square.save_to_file([])
+        path = "Square.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, "[]")
+
+    def test_save_to_file(self):
+        """
+        Test when path is provided
+        """
+        Square.save_to_file([Square(1)])
+        path = "Square.json"
+        with open(path, "r", encoding="utf-8") as f:
+            value = f.read()
+        self.assertEqual(value, '[{"id": 28, "x": 0, "size": 1, "y": 0}]')
 
 if __name__ == '__main__':
     unittest.main()
