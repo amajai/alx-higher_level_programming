@@ -1,6 +1,5 @@
 #!/usr/bin/node
-const { argv } = require('node:process');
-const [, , ...args] = argv;
+const args = process.argv.slice(2);
 if (!parseInt(args[0])) {
   console.log('Missing number of occurrences');
 } else {
