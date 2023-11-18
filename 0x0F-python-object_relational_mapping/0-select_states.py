@@ -5,6 +5,7 @@ Module to query the states list from database
 import MySQLdb
 import sys
 
+
 def get_states(username, password, database_name):
     """
     Get the list of states for database
@@ -23,6 +24,7 @@ def get_states(username, password, database_name):
 
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
