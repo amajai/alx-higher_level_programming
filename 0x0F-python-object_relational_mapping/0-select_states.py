@@ -18,7 +18,7 @@ def get_states(username, password, database_name):
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
     res = cursor.fetchall()
-    for state in res[:5]:
+    for state in res:
         print(state)
 
     cursor.close()
