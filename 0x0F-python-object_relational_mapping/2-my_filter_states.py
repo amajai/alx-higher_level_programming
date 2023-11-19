@@ -8,8 +8,7 @@ import sys
 
 def get_state(username, password, database_name, state_name):
     """
-    takes in an argument and displays all values in the states
-    table of hbtn_0e_0_usa where name matches the argument.
+    takes in an argument and displays all values in the states.
     """
     db = MySQLdb.connect(
         user=username,
