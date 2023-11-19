@@ -8,7 +8,7 @@ import sys
 
 def get_states_with_N(username, password, database_name):
     """
-    Get the list of states for database
+    Get the list of states starting with 'N' for database
     """
     db = MySQLdb.connect(
         user=username,
@@ -19,7 +19,7 @@ def get_states_with_N(username, password, database_name):
     cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
     res = cursor.fetchall()
-    for state in res[:2]:
+    for state in res:
         print(state)
 
     cursor.close()
