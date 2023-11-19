@@ -3,7 +3,7 @@
 Module for the state table
 """
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 import sys
 from model_state import Base, State
 
@@ -14,10 +14,9 @@ if __name__ == "__main__":
                            pool_mpre_ping=True)
     Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    res = session.query(State).order_by(State.id.asc()).all()
-
-    for state in res:
-        print(f"{state.id}: {state.name}")
-    session.close()
+    with engine.connect() as con:
+        query = select(State).order_by(State.id.asc())
+        res = con.execute(query)
+        for state in res:
+            print(f"{state.id}: {state.name}")
+    engine.dispose()
