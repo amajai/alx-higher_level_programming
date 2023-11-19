@@ -21,7 +21,6 @@ def get_states_with_N(username, password, database_name):
     res = cursor.fetchall()
     for state in res:
         print(state)
-
     cursor.close()
     db.close()
 
