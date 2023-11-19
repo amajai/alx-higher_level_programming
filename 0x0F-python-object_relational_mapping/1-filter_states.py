@@ -19,7 +19,7 @@ def get_states_with_N(username, password, database_name):
     cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
     res = cursor.fetchall()
-    for state in res:
+    for state in res[:2]:
         print(state)
 
     cursor.close()
