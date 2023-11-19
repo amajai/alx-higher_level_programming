@@ -16,7 +16,7 @@ def get_state(username, password, database_name, state_name):
         db=database_name
     )
     cursor = db.cursor()
-    q = "SELECT * FROM states WHERE name = %s"
+    q = "SELECT * FROM states WHERE name LIKE BINARY %s ORDER BY id ASC"
     cursor.execute(q, (state_name,))
 
     res = cursor.fetchall()
