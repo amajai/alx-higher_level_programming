@@ -11,14 +11,12 @@ def get_states_with_N(username, password, database_name):
     Get the list of states starting with 'N' for database
     """
     db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
         user=username,
         passwd=password,
         db=database_name
     )
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
 
     res = cursor.fetchall() 
     for state in res:
