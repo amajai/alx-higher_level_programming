@@ -5,12 +5,12 @@
 def find_peak(nums_list):
     """finds a peak in a list of unsorted integers."""
     if nums_list:
-        l = 0
-        r = len(nums_list) - 1
-        while l < r:
-            m = (l + r) // 2
+        L = 0
+        R = len(nums_list) - 1
+        while L < R:
+            m = (L + R) // 2
             if nums_list[m] > nums_list[m + 1]:
-                r = m
+                R = m
             else:
-                l = m + 1
-        return nums_list[l]
+                L = m + 1
+        return nums_list[L]
