@@ -11,13 +11,15 @@ request(apiUrl, (error, response, body) => {
     console.log(error);
     return;
   }
-  const data = JSON.parse(body);
-  for (const key of data.results) {
-    for (const charLink of key.characters) {
-      if (charLink === character) {
-        count += 1;
+  if (response.statusCode === 200) {
+    const data = JSON.parse(body);
+    for (const key of data.results) {
+      for (const charLink of key.characters) {
+        if (charLink === character) {
+          count += 1;
+        }
       }
     }
+    console.log(count);
   }
-  console.log(count);
 });
